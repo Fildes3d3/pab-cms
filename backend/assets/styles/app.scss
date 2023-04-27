@@ -1,0 +1,93 @@
+@import "../../node_modules/bootstrap/scss/bootstrap.scss";
+@import "../../node_modules/bootstrap-icons/font/bootstrap-icons.scss";
+
+body {
+    background-color: lightgray;
+    background-image: url("../img/bg.webp");
+    height: 100vh;
+}
+
+#admin-content {
+    width: 80vw;
+}
+
+.header-icon {
+    font-size: 2rem;
+}
+
+.header-link {
+    display: grid;
+}
+
+.header-logo-image {
+    width: 61px;
+}
+
+.login {
+    min-height: 100vh;
+    min-width: 40vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.login .card {
+    min-width: 40vh;
+}
+
+.form-control, .form-control-addon {
+    border-width: 0 0 1px 0;
+    border-color: #ced4da;
+    border-style: solid;
+    border-radius: 0;
+}
+
+.form-control:focus, .form-control-addon:focus {
+    color: black;
+    background-color: white;
+    border-width: 0 0 1px 0;
+    border-color: #ced4da;
+    outline: 0;
+    box-shadow: none;
+}
+
+.notification-dialog {
+    width: 40%;
+    margin: 30% auto;
+}
+
+.notification-dialog-close-button button {
+    box-sizing: content-box;
+    width: 1em;
+    height: 1em;
+    padding: 0.25em 0.25em;
+    color: #000;
+    border: 0;
+    border-radius: 0.375rem;
+    opacity: 0.5;
+    background-color: transparent;
+}
+
+.user-link {
+    cursor: pointer;
+    margin-bottom: 0;
+}
+
+.breadcrumb-link {
+    display: flex;
+    padding: 0;
+}
+
+.breadcrumb-link-last {
+    cursor: none;
+    color: #6E6E6E;
+}
+
+.card-header .form-control, .card-header .form-select {
+    background-color: transparent;
+    border-width: 0 0 1px 0;
+    border-color: #ced4da;
+    border-style: solid;
+    border-radius: 0;
+}
+

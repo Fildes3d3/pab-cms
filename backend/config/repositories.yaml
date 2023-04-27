@@ -1,0 +1,12 @@
+services:
+  # default configuration for services in *this* file
+  _defaults:
+    autowire: true
+    autoconfigure: true
+    public: true
+
+  app.session_repository:
+    class: App\Repository\RedisSessionRepository
+    autowire: true
+    public: true
+  App\Security\SessionRepository: '@app.session_repository'

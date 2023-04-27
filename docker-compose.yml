@@ -1,0 +1,57 @@
+version: "1"
+
+volumes:
+  db-data:
+    external: false
+
+services:
+  db:
+    image: mysql:5.7
+    environment:
+      - MYSQL_ROOT_PASSWORD=root
+    volumes:
+      - db-data:/var/lib/mysql:cached
+    ports:
+      - 13306:3306
+  redis:
+    image: redis
+  phpmyadmin:
+    image: phpmyadmin/phpmyadmin
+    depends_on:
+      - db
+    ports:
+      - 8080:80
+    environment:
+      - MYSQL_ROOT_PASSWORD=root
+  php-fpm:
+    build: ./docker/php-fpm
+    container_name: php-fpm-php
+    environment:
+      - SYMFONY_DEBUG=true
+      - SYMFONY_ENV=dev
+    depends_on:
+      - db
+      - redis
+    volumes:
+      - .:/app:cached
+    ports:
+      - 2080:8080
+  frontoffice:
+    build: ./frontoffice/
+    container_name: nuxt
+    ports:
+      - 24678:24678
+      - 3000:3000
+    volumes:
+      - .:/app
+    command: bash -c "yarn install --check-files && yarn run dev"
+  pab.local:
+    image: nginx:1.11.10
+    depends_on:
+      - php-fpm
+      - frontoffice
+    volumes:
+      - ./docker/nginx/default.conf:/etc/nginx/conf.d/default.conf
+      - .:/app
+    ports:
+      - 80:80
