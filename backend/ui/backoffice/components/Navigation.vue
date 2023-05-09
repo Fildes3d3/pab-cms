@@ -3,16 +3,18 @@
     <div class="container">
       <div class="d-flex flex-wrap align-items-center justify-content-center justify-content-lg-start">
         <ul class="nav col-12 col-lg-auto my-2 justify-content-center my-md-0 text-small">
-          <li>
+          <li class="nav-item underline-nav-item">
             <router-link
               :to="{ name: 'pageList' }"
-              class="nav-link text-black"
+              class="nav-link underline-nav-link text-black"
             >
               Pages
             </router-link>
+          </li>
+          <li class="nav-item underline-nav-item">
             <router-link
               :to="{ name: 'blockList' }"
-              class="nav-link text-black"
+              class="nav-link underline-nav-link text-black"
             >
               Blocks
             </router-link>
