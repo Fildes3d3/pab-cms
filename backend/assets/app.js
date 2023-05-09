@@ -3,7 +3,7 @@ import './bootstrap';
 import { createApp } from "vue";
 import { createPinia } from 'pinia'
 import piniaPluginPersistedState from "pinia-plugin-persistedstate"
-import Layout from "@bo/components/Layout.vue";
+import Layout from "../ui/backoffice/components/Layout.vue";
 import router from "../ui/router";
 import { Form, Field, ErrorMessage, defineRule, configure } from "vee-validate";
 import Dialog from 'vue3-dialog';

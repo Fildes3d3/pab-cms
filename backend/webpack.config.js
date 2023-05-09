@@ -40,6 +40,5 @@ if (!Encore.isProduction()) {
 let config = Encore.getWebpackConfig();
 
 config.resolve.alias['@bo'] = path.resolve(__dirname, 'ui/backoffice/');
-config.resolve.alias['@fo'] = path.resolve(__dirname, 'ui/frontoffice/');
 
 module.exports = config;
