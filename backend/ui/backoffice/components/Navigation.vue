@@ -19,6 +19,14 @@
               Blocks
             </router-link>
           </li>
+          <li class="nav-item underline-nav-item">
+            <router-link
+              :to="{ name: 'navigationItemList' }"
+              class="nav-link underline-nav-link text-black"
+            >
+              Navigation Items
+            </router-link>
+          </li>
         </ul>
       </div>
     </div>

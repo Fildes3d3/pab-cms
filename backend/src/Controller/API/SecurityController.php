@@ -41,7 +41,7 @@ class SecurityController extends RESTController
     #[Route('/', name: 'app_logout', methods: ['DELETE'])]
     public function logout(AuthorizationService $authorizationService, SessionManager $sessionManager): Response
     {
-        if (null ===  $this->requiresAuthentication($authorizationService)) {
+        if (null ===  $this->requiresAuthentication()) {
             return $this->json([], 401);
         }
 
@@ -57,9 +57,9 @@ class SecurityController extends RESTController
     }
 
     #[Route('/me', methods: ['GET'])]
-    public function getMe(UserManager $userManager, AuthorizationService $authorizationService): Response
+    public function getMe(UserManager $userManager): Response
     {
-        if (null ===  $this->requiresAuthentication($authorizationService)) {
+        if (null ===  $this->requiresAuthentication()) {
             return $this->json([], 401);
         }
 

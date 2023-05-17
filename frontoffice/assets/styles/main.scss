@@ -1,0 +1,31 @@
+@import "bootstrap/scss/bootstrap";
+@import "navbar";
+
+body {
+    font-family: "Inconsolata", monospace;
+    color: #0d1e2d;
+}
+
+a {
+    color: #777;
+    text-decoration: none;
+}
+
+a:hover {
+    color: #000;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+.h6 {
+    font-family: "Raleway", sans-serif;
+}
+
+
+.lead {
+    font-size: 1.25rem;
+    font-weight: 300;
+}

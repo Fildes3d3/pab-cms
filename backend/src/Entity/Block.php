@@ -2,12 +2,31 @@
 
 namespace App\Entity;
 
+use ApiPlatform\Metadata\ApiResource;
+use ApiPlatform\Metadata\Delete;
+use ApiPlatform\Metadata\Get;
+use ApiPlatform\Metadata\GetCollection;
+use ApiPlatform\Metadata\Post;
+use ApiPlatform\Metadata\Put;
 use App\Repository\BlockRepository;
 use Doctrine\DBAL\Types\Types;
 use Doctrine\ORM\Mapping as ORM;
 
 #[ORM\Entity(repositoryClass: BlockRepository::class)]
 #[ORM\Table(name: '`block`')]
+#[ApiResource(
+    description: "basic building modules for pages",
+    operations: [
+        new Get(uriTemplate: '/block/{id}'),
+        new GetCollection(uriTemplate: '/block/'),
+        new Post(uriTemplate: '/block/'),
+        new Put(uriTemplate: '/block/{id}'),
+        new Delete(uriTemplate: '/block/{id}')
+    ],
+    extraProperties: [
+        'standard_put' => true
+    ]
+)]
 class Block implements \JsonSerializable
 {
     #[ORM\Id]
@@ -81,13 +100,6 @@ class Block implements \JsonSerializable
     public function getCreatedAt(): \DateTime
     {
         return $this->createdAt;
-    }
-
-    public function setCreatedAt(\DateTime $createdAt): self
-    {
-        $this->createdAt = $createdAt;
-
-        return $this;
     }
 
     public function getUpdatedAt(): \DateTime

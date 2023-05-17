@@ -1,4 +1,5 @@
 import { createRouter, createWebHashHistory } from 'vue-router'
+import { navigationItemRoutes } from "./navigationItemRouter";
 import { blockRoutes } from './blockRouter'
 import { pageRoutes } from './pageRouter'
 import { useUserStore } from '../store/user'
@@ -29,6 +30,7 @@ const routes = [
     children: []
       .concat(pageRoutes)
       .concat(blockRoutes)
+      .concat(navigationItemRoutes)
   }
 ]
 

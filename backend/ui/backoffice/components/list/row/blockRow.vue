@@ -13,7 +13,7 @@
       />
       <ViewButton
         :item="item"
-        :resource-type="resourceType"
+        :callback="preview"
       />
     </div>
     <div class="col-12 text-center">
@@ -24,6 +24,7 @@
 
 <script>
 import {defineAsyncComponent} from "vue";
+import BlockService from "../../../../services/BlockService";
 
 const EditButton = defineAsyncComponent(() => import('../../buttons/EditButton.vue'))
 const ViewButton = defineAsyncComponent(() => import('../../buttons/ViewButton.vue'))
@@ -39,6 +40,15 @@ export default {
         type: String,
         required: true
     }
+  },
+  methods: {
+      preview(item) {
+          BlockService.preview(item).then( response => {
+              if (response.status === 200) {
+                  window.open(`preview/block/${item.id}`, "_blank")
+              }
+          })
+      }
   }
 }
 </script>

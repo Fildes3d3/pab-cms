@@ -1,13 +1,12 @@
 import {
   PAGE_LIST,
   PAGE_NEW,
-  PAGE_EDIT, PAGE_VIEW
+  PAGE_EDIT,
 } from './routes'
 const Container = () => import('@bo/components/Container.vue')
 const List = () => import('@bo/page/List.vue')
 const New = () => import('@bo/components/new/Base.vue')
 const Edit = () => import('@bo/components/edit/Base.vue')
-const View = () => import('@bo/components/view/Base.vue')
 
 export const pageRoutes = [
   {
@@ -42,15 +41,6 @@ export const pageRoutes = [
         props: route => ({ id: Number(route.params.id) }),
         meta: {
           breadcrumb: 'Edit',
-        }
-      },
-      {
-        path: ':id/view',
-        name: PAGE_VIEW,
-        component: View,
-        props: route => ({ id: Number(route.params.id) }),
-        meta: {
-          breadcrumb: 'View',
         }
       },
     ]

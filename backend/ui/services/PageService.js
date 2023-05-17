@@ -1,10 +1,6 @@
-import DefaultRestService from './DefaultRestService'
 import axios from 'axios'
 
 export default {
-  getItems () {
-    return DefaultRestService.getItems('pages')
-  },
   getPage (id) {
     return axios.get('api/v1/pages/' + id)
   },

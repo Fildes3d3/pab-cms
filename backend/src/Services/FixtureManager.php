@@ -4,6 +4,8 @@ namespace App\Services;
 
 use App\Entity\Block;
 use App\Entity\Block\BlockType;
+use App\Entity\Navigation\NavigationItemType;
+use App\Entity\NavigationItem;
 use App\Entity\User;
 use Doctrine\ORM\EntityManagerInterface;
 use Faker\Factory;
@@ -145,6 +147,39 @@ class FixtureManager
         $this->em->flush();
 
         return $block;
+    }
+
+    public function createNavigationItem(array $options = []): NavigationItem
+    {
+        $resolver = new OptionsResolver();
+        $resolvedOption = $resolver
+            ->setDefined([
+                'title',
+                'slug',
+                'path',
+                'type',
+            ])
+            ->setAllowedTypes('type', NavigationItemType::class)
+            ->setDefaults([
+                'title' => $this->fakerGenerator->title,
+                'slug' => $this->fakerGenerator->slug,
+                'path' => $this->fakerGenerator->slug,
+            ])
+            ->resolve($options)
+        ;
+
+        $navigationItem = new NavigationItem($resolvedOption['type']);
+        $navigationItem
+            ->setTitle($resolvedOption['title'])
+            ->setSlug($resolvedOption['slug'])
+            ->setPath($resolvedOption['path'])
+            ->setUpdatedAt(new \DateTime())
+        ;
+
+        $this->em->persist($navigationItem);
+        $this->em->flush();
+
+        return $navigationItem;
     }
 
 }

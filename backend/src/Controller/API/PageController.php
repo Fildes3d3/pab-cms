@@ -3,7 +3,6 @@
 namespace App\Controller\API;
 
 use App\Controller\RESTController;
-use App\Services\AuthorizationService;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
 
@@ -11,10 +10,8 @@ use Symfony\Component\Routing\Annotation\Route;
 class PageController extends RESTController
 {
     #[Route('/', name: 'page_list', methods: ['GET'])]
-    public function list(AuthorizationService $authorizationService): Response
+    public function list(): Response
     {
-        $this->requiresAuthentication($authorizationService);
-
         return $this->json([]);
     }
 

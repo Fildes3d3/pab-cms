@@ -9,7 +9,15 @@
     "postinstall": "nuxt prepare"
   },
   "devDependencies": {
+    "@popperjs/core": "^2.11.7",
+    "@types/aos": "^3.0.4",
     "@types/node": "^18",
-    "nuxt": "^3.4.2"
+    "nuxt": "^3.5.0",
+    "sass": "^1.62.1",
+    "sass-loader": "^13.2.2"
+  },
+  "dependencies": {
+    "aos": "^3.0.0-beta.6",
+    "bootstrap": "^5.2.3"
   }
 }
